@@ -1,12 +1,7 @@
-import Pintables.IPintables;
-import Pintables.PintarConAcuarela;
-import Pintables.PintarConAerosol;
-import Pintables.PintarConTinta;
+import Pintables.*;
+import Recortables.*;
 import SuperficieDeDibujos.ContenedorDeElementos;
 import SuperficieDeDibujos.Elemento;
-import Recortables.RecortableAluminio;
-import Recortables.RecortableMadera;
-import Recortables.RecortablePlastico;
 
 
 import java.util.ArrayList;
@@ -15,13 +10,15 @@ import java.util.ArrayList;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        PintarConAcuarela miAcuerala = new PintarConAcuarela();
-        PintarConAerosol miAerosol = new PintarConAerosol();
-        PintarConTinta miTinta = new PintarConTinta();
+        FactoriaDePintables PintaFactory = new FactoriaDePintables();
+        IPintables miAcuerala = PintaFactory.damePintable(TiposPintables.Acuarela);
+        IPintables miAerosol = PintaFactory.damePintable(TiposPintables.Aerosol);
+        IPintables miTinta = PintaFactory.damePintable(TiposPintables.Tinta);
 
-        RecortableAluminio miAluminio = new RecortableAluminio();
-        RecortableMadera miMadera = new RecortableMadera();
-        RecortablePlastico miPlastico = new RecortablePlastico();
+        FactoriaDeRecortables RecorteFactory = new FactoriaDeRecortables();
+        IRecortables miAluminio = RecorteFactory.dameRecorte(TiposRecortables.Aluminio);
+        IRecortables miMadera= RecorteFactory.dameRecorte(TiposRecortables.Madera);
+        IRecortables miPlastico = RecorteFactory.dameRecorte(TiposRecortables.Plastico);
 
         Elemento aerosolEnMadera = new Elemento(miAerosol, miMadera);
         Elemento tintaEnPlastico = new Elemento(miTinta,miPlastico);
